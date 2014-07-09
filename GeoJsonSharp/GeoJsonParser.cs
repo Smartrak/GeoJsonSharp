@@ -84,6 +84,25 @@ namespace GeoJsonSharp
 		private FeatureCollection ParseFeatureCollection()
 		{
 			AssertRead(JsonToken.PropertyName);
+
+			if ((string)Reader.Value == "crs")
+			{
+				//TODO: Would be nice to remember the crs, for now, toss it
+				int stackSize = 0;
+				while (Reader.Read())
+				{
+					if (Reader.TokenType == JsonToken.StartObject)
+						stackSize++;
+					else if (Reader.TokenType == JsonToken.EndObject)
+						stackSize--;
+
+					if (stackSize == 0)
+						break;
+				}
+
+				AssertRead(JsonToken.PropertyName);
+			}
+
 			Assert((string)Reader.Value == "features");
 
 			AssertRead(JsonToken.StartArray);
