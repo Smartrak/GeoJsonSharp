@@ -2,7 +2,7 @@
 
 namespace GeoJsonSharp
 {
-	class FeatureCollection : GeoJsonObject
+	public class FeatureCollection : GeoJsonObject
 	{
 		public readonly List<Feature> Features = new List<Feature>();
 	}

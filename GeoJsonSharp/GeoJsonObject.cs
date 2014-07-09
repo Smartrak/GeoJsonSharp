@@ -1,6 +1,6 @@
 ﻿namespace GeoJsonSharp
 {
-	abstract class GeoJsonObject
+	public abstract class GeoJsonObject
 	{
 		protected GeoJsonObject()
 		{

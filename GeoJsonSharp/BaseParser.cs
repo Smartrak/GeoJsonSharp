@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace GeoJsonSharp
 {
-	class BaseParser
+	public class BaseParser
 	{
 		protected readonly JsonTextReader Reader;
 		protected readonly ParserSettings Settings;
