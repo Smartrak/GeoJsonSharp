@@ -54,9 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseParser.cs" />
-    <Compile Include="Feature.cs" />
-    <Compile Include="FeatureCollection.cs" />
-    <Compile Include="GeoJsonObject.cs" />
     <Compile Include="GeoJsonParser.cs" />
     <Compile Include="GeometryParser.cs" />
     <Compile Include="ParserSettings.cs" />

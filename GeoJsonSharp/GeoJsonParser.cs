@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using NetTopologySuite.Features;
 using Newtonsoft.Json;
 
 namespace GeoJsonSharp
@@ -19,7 +20,7 @@ namespace GeoJsonSharp
 			return (FeatureCollection)ParseUnknown(false);
 		}
 
-		private GeoJsonObject ParseUnknown(bool startObjectAlreadyConsumed)
+		private object ParseUnknown(bool startObjectAlreadyConsumed)
 		{
 			if (!startObjectAlreadyConsumed)
 			{
@@ -49,7 +50,8 @@ namespace GeoJsonSharp
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("properties");
 
-			var res = new Feature();
+			var attributes = new AttributesTable();
+
 			AssertRead(JsonToken.StartObject);
 
 			//Now we read key/value pairs for the properties until we hit end object
@@ -67,18 +69,18 @@ namespace GeoJsonSharp
 
 				var value = Reader.Value;
 
-				res.Properties[property] = value;
+				attributes.AddAttribute(property, value);
 			}
 
 			//Now hopefully we hit the geometry
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("geometry");
 
-			res.Geometry = _geometryParser.ParseGeometry();
+			var geometry = _geometryParser.ParseGeometry();
 
 			AssertRead(JsonToken.EndObject);
 
-			return res;
+			return new Feature(geometry, attributes);
 		}
 
 		private FeatureCollection ParseFeatureCollection()
