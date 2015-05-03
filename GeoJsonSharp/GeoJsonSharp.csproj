@@ -53,9 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseParser.cs" />
-    <Compile Include="GeoJsonParser.cs" />
-    <Compile Include="GeometryParser.cs" />
+    <Compile Include="Parse\BaseParser.cs" />
+    <Compile Include="Serialize\BaseSerializer.cs" />
+    <Compile Include="Serialize\GeoJsonSerializer.cs" />
+    <Compile Include="Parse\GeoJsonParser.cs" />
+    <Compile Include="Parse\GeometryParser.cs" />
+    <Compile Include="Serialize\GeometrySerializer.cs" />
     <Compile Include="ParserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

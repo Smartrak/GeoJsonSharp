@@ -4,7 +4,7 @@ using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 
-namespace GeoJsonSharp
+namespace GeoJsonSharp.Parse
 {
 	internal class GeometryParser : BaseParser
 	{

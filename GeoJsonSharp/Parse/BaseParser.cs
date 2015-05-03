@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace GeoJsonSharp
+namespace GeoJsonSharp.Parse
 {
 	public class BaseParser
 	{

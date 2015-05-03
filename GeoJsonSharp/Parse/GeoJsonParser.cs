@@ -3,7 +3,7 @@ using System.IO;
 using NetTopologySuite.Features;
 using Newtonsoft.Json;
 
-namespace GeoJsonSharp
+namespace GeoJsonSharp.Parse
 {
 	public class GeoJsonParser : BaseParser
 	{
