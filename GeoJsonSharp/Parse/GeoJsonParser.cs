@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using NetTopologySuite.CoordinateSystems;
 using NetTopologySuite.Features;
 using Newtonsoft.Json;
 
@@ -85,22 +86,37 @@ namespace GeoJsonSharp.Parse
 
 		private FeatureCollection ParseFeatureCollection()
 		{
+			var res = new FeatureCollection();
+
 			AssertRead(JsonToken.PropertyName);
 
 			if ((string)Reader.Value == "crs")
 			{
-				//TODO: Would be nice to remember the crs, for now, toss it
-				int stackSize = 0;
-				while (Reader.Read())
-				{
-					if (Reader.TokenType == JsonToken.StartObject)
-						stackSize++;
-					else if (Reader.TokenType == JsonToken.EndObject)
-						stackSize--;
+				CRSBase crs;
 
-					if (stackSize == 0)
+				AssertRead(JsonToken.StartObject);
+
+				AssertRead(JsonToken.PropertyName);
+				AssertValue("type");
+
+				AssertRead(JsonToken.String);
+				var type = (string)Reader.Value;
+
+				switch (type)
+				{
+					case "name":
+						crs = ParseNamedCRS();
 						break;
+					case "link":
+						crs = ParseLinkedCRS();
+						break;
+					default:
+						throw new Exception(String.Format("Don't know how to parse CRS type {0}", type));
 				}
+
+				AssertRead(JsonToken.EndObject);
+
+				res.CRS = crs;
 
 				AssertRead(JsonToken.PropertyName);
 			}
@@ -109,7 +125,6 @@ namespace GeoJsonSharp.Parse
 
 			AssertRead(JsonToken.StartArray);
 
-			var res = new FeatureCollection();
 
 			while (Reader.Read())
 			{
@@ -130,6 +145,50 @@ namespace GeoJsonSharp.Parse
 			//TODO: Read endobject?
 
 			return res;
+		}
+
+		private NamedCRS ParseNamedCRS()
+		{
+			AssertRead(JsonToken.PropertyName);
+			AssertValue("properties");
+
+			AssertRead(JsonToken.StartObject);
+
+			AssertRead(JsonToken.PropertyName);
+			AssertValue("name");
+
+			AssertRead(JsonToken.String);
+			var name = (string)Reader.Value;
+
+			AssertRead(JsonToken.EndObject);
+			
+			var namedCrs = new NamedCRS(name);
+			return namedCrs;
+		}
+
+		private LinkedCRS ParseLinkedCRS()
+		{
+			AssertRead(JsonToken.PropertyName);
+			AssertValue("properties");
+
+			AssertRead(JsonToken.StartObject);
+
+			AssertRead(JsonToken.PropertyName);
+			AssertValue("href");
+
+			AssertRead(JsonToken.String);
+			var href = (string)Reader.Value;
+
+			AssertRead(JsonToken.PropertyName);
+			AssertValue("type");
+
+			AssertRead(JsonToken.String);
+			var type = (string)Reader.Value;
+
+			AssertRead(JsonToken.EndObject);
+
+			var linkedCrs = new LinkedCRS(href, type);
+			return linkedCrs;
 		}
 	}
 }
