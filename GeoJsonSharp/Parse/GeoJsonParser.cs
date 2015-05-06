@@ -51,7 +51,7 @@ namespace GeoJsonSharp.Parse
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("properties");
 
-			var attributes = new AttributesTable();
+			var attributes = Settings.AttributesTableFactory.Invoke();
 
 			AssertRead(JsonToken.StartObject);
 
