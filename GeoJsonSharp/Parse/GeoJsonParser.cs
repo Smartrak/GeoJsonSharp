@@ -16,6 +16,14 @@ namespace GeoJsonSharp.Parse
 			_geometryParser = new GeometryParser(Reader, settings);
 		}
 
+		public GeoJsonParser(TextReader reader, ParserSettings settings)
+			: base(new JsonTextReader(reader), settings)
+		{
+			_geometryParser = new GeometryParser(Reader, settings);
+
+		}
+
+
 		public FeatureCollection Parse()
 		{
 			return (FeatureCollection)ParseUnknown(false);
