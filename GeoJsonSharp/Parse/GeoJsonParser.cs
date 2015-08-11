@@ -74,7 +74,7 @@ namespace GeoJsonSharp.Parse
 
 				string property = (string)Reader.Value;
 
-				AssertRead(new[] { JsonToken.Float, JsonToken.Integer, JsonToken.Null, JsonToken.String });
+				AssertRead(new[] {JsonToken.Float, JsonToken.Integer, JsonToken.Null, JsonToken.String, JsonToken.Date});
 
 				var value = Reader.Value;
 
