@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJsonSharp", "GeoJsonSharp\GeoJsonSharp.csproj", "{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{429F3A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJsonSharp.Tests", "GeoJsonSharp.Tests\GeoJsonSharp.Tests.csproj", "{7359AF86-3275-4E2F-802A-4B5131B90FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7359AF86-3275-4E2F-802A-4B5131B90FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7359AF86-3275-4E2F-802A-4B5131B90FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7359AF86-3275-4E2F-802A-4B5131B90FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7359AF86-3275-4E2F-802A-4B5131B90FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
