@@ -1,20 +1,18 @@
-﻿namespace GeoJsonSharp.Tests.Parse
-{
-    using System;
-    using GeoJsonSharp.Parse;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using NetTopologySuite.Features;
+﻿using System;
+using GeoJsonSharp.Parse;
+using NUnit.Framework;
 
+namespace GeoJsonSharp.Tests.Parse
+{
     /// <summary>
     /// The geo json parser test.
     /// </summary>
-    [TestClass]
     public class GeoJsonParserTest
     {
         /// <summary>
         /// The parse feature with date property.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ParseFeatureWithDateProperty()
         {
             // Arrange
@@ -29,7 +27,7 @@
             var processed = featureCollection.Features[0].Attributes["processed"];
 
             // Assert
-            Assert.IsInstanceOfType(processed, typeof(DateTime));
+            Assert.That(processed, Is.InstanceOf<DateTime>());
         }
     }
 }

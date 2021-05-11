@@ -53,7 +53,7 @@ namespace GeoJsonSharp.Serialize
 			Writer.WriteEndObject();
 		}
 
-		private void SerializeFeature(Feature feature)
+		private void SerializeFeature(IFeature feature)
 		{
 			Writer.WriteStartObject();
 			Writer.WritePropertyName("type");
@@ -116,7 +116,5 @@ namespace GeoJsonSharp.Serialize
 
 			Writer.WriteEndObject();
 		}
-
-		
 	}
 }
