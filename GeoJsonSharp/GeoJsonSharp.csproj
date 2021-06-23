@@ -19,6 +19,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Nullable>enable</Nullable>
     <LangVersion>8</LangVersion>
+    <RepositoryUrl>https://github.com/Smartrak/GeoJsonSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
