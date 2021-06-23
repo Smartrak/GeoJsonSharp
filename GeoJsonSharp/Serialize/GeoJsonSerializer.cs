@@ -35,7 +35,7 @@ namespace GeoJsonSharp.Serialize
 						SerializeLinkedCRS(featureCollection.CRS);
 						break;
 					default:
-						throw new Exception(String.Format("Don't know how to serialize {0} CRS type", featureCollection.CRS));
+						throw new Exception($"Don't know how to serialize {featureCollection.CRS} CRS type");
 				}
 
 				Writer.WriteEndObject();
@@ -107,8 +107,7 @@ namespace GeoJsonSharp.Serialize
 			Writer.WritePropertyName("href");
 			Writer.WriteValue((string) linkedCrs.Properties["href"]); //object boxed string
 
-			object typeProperty;
-			if (linkedCrs.Properties.TryGetValue("type", out typeProperty))
+			if (linkedCrs.Properties.TryGetValue("type", out var typeProperty))
 			{
 				Writer.WritePropertyName("type");
 				Writer.WriteValue((string) typeProperty); //object boxed string

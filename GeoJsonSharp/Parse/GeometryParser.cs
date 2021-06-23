@@ -13,7 +13,7 @@ namespace GeoJsonSharp.Parse
 		{
 		}
 
-		public IGeometry ParseGeometry()
+		public IGeometry? ParseGeometry()
 		{
 			AssertRead(JsonToken.StartObject);
 
@@ -22,8 +22,8 @@ namespace GeoJsonSharp.Parse
 
 			AssertRead(JsonToken.String);
 
-			IGeometry geometry;
-			switch (((string)Reader.Value).ToLower())
+			IGeometry? geometry;
+			switch (((string?)Reader.Value)?.ToLower())
 			{
 				case "point":
 					geometry = ParsePoint();
@@ -54,12 +54,10 @@ namespace GeoJsonSharp.Parse
 			if (!alreadyConsumedStartArray)
 				AssertRead(JsonToken.StartArray);
 
-			double x;
-			double y;
 			double z = double.NaN;
 
-			x = (double)Reader.ReadAsDecimal().Value;
-			y = (double)Reader.ReadAsDecimal().Value;
+			var x = (double)Reader.ReadAsDecimal()!.Value;
+			var y = (double)Reader.ReadAsDecimal()!.Value;
 
 			var zMaybe = Reader.ReadAsDecimal();
 			if (zMaybe.HasValue)
@@ -84,7 +82,7 @@ namespace GeoJsonSharp.Parse
 			return new Point(coord);
 		}
 
-		private LineString ParseLineString(bool alreadyInsideArray)
+		private LineString? ParseLineString(bool alreadyInsideArray)
 		{
 			if (!alreadyInsideArray)
 			{
@@ -182,6 +180,5 @@ namespace GeoJsonSharp.Parse
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("coordinates");
 		}
-
 	}
 }

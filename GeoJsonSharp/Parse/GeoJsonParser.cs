@@ -41,9 +41,9 @@ namespace GeoJsonSharp.Parse
 			AssertValue("type");
 
 			AssertRead(JsonToken.String);
-			var type = (string)Reader.Value;
+			var type = (string?)Reader.Value;
 
-			switch (type.ToLower())
+			switch (type?.ToLower())
 			{
 				case "featurecollection":
 					return ParseFeatureCollection();
@@ -63,16 +63,16 @@ namespace GeoJsonSharp.Parse
 
 			AssertRead(JsonToken.StartObject);
 
-			//Now we read key/value pairs for the properties until we hit end object
+			// Now we read key/value pairs for the properties until we hit end object
 			while (true)
 			{
-				//Should be a propertyname, or endobject (meaning we are done with properties)
+				// Should be a propertyname, or endobject (meaning we are done with properties)
 				Reader.Read();
 				if (Reader.TokenType == JsonToken.EndObject)
 					break;
 				Assert(Reader.TokenType == JsonToken.PropertyName);
 
-				string property = (string)Reader.Value;
+				var property = (string?)Reader.Value;
 
 				AssertRead(new[] {JsonToken.Float, JsonToken.Integer, JsonToken.Null, JsonToken.String, JsonToken.Date});
 
@@ -81,7 +81,7 @@ namespace GeoJsonSharp.Parse
 				attributes.AddAttribute(property, value);
 			}
 
-			//Now hopefully we hit the geometry
+			// Now hopefully we hit the geometry
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("geometry");
 
@@ -98,7 +98,7 @@ namespace GeoJsonSharp.Parse
 
 			AssertRead(JsonToken.PropertyName);
 
-			if ((string)Reader.Value == "crs")
+			if ((string?)Reader.Value == "crs")
 			{
 				CRSBase crs;
 
@@ -119,7 +119,7 @@ namespace GeoJsonSharp.Parse
 						crs = ParseLinkedCRS();
 						break;
 					default:
-						throw new Exception(String.Format("Don't know how to parse CRS type {0}", type));
+						throw new Exception($"Don't know how to parse CRS type {type}");
 				}
 
 				AssertRead(JsonToken.EndObject);
@@ -129,7 +129,7 @@ namespace GeoJsonSharp.Parse
 				AssertRead(JsonToken.PropertyName);
 			}
 
-			Assert((string)Reader.Value == "features");
+			Assert((string?)Reader.Value == "features");
 
 			AssertRead(JsonToken.StartArray);
 
@@ -150,8 +150,7 @@ namespace GeoJsonSharp.Parse
 				}
 			}
 
-			//TODO: Read endobject?
-
+			// TODO: Read endobject?
 			return res;
 		}
 
@@ -166,7 +165,7 @@ namespace GeoJsonSharp.Parse
 			AssertValue("name");
 
 			AssertRead(JsonToken.String);
-			var name = (string)Reader.Value;
+			var name = (string?)Reader.Value;
 
 			AssertRead(JsonToken.EndObject);
 			
@@ -185,13 +184,13 @@ namespace GeoJsonSharp.Parse
 			AssertValue("href");
 
 			AssertRead(JsonToken.String);
-			var href = (string)Reader.Value;
+			var href = (string?)Reader.Value;
 
 			AssertRead(JsonToken.PropertyName);
 			AssertValue("type");
 
 			AssertRead(JsonToken.String);
-			var type = (string)Reader.Value;
+			var type = (string?)Reader.Value;
 
 			AssertRead(JsonToken.EndObject);
 

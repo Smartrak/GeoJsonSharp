@@ -29,12 +29,12 @@ namespace GeoJsonSharp.Parse
 			Reader.Read();
 
 			if (!expectedToken.Contains(Reader.TokenType))
-				throw new Exception("Expected one of [" + String.Join(", ", expectedToken.Select(x => x.ToString())) + "] but got " + Reader.TokenType);
+				throw new Exception("Expected one of [" + string.Join(", ", expectedToken.Select(x => x.ToString())) + "] but got " + Reader.TokenType);
 		}
 
 		protected void AssertValue(string expectedValue)
 		{
-			if ((string)Reader.Value != expectedValue)
+			if ((string?)Reader.Value != expectedValue)
 				throw new Exception("Expected '" + expectedValue + "' but got '" + Reader.Value + "'");
 		}
 
