@@ -9,10 +9,10 @@
     <PackageTags>GeoJSON NTS</PackageTags>
     <PackageReleaseNotes>Add .Net Standard support</PackageReleaseNotes>
     <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
-    <Version>1.0.3</Version>
-    <VersionPrefix>1.0.3</VersionPrefix>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
+    <VersionPrefix>1.0.4</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Title>GeoJsonSharp</Title>
     <Company>Smartrak</Company>

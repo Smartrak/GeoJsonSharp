@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJsonSharp", "GeoJsonSharp\GeoJsonSharp.csproj", "{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoJsonSharp", "GeoJsonSharp\GeoJsonSharp.csproj", "{AC05CCBD-B50D-4AB1-BF31-F1A14005B97F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{429F3AC9-1D2D-4AF8-9738-C4F5A92CDCC6}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{429F3A
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJsonSharp.Tests", "GeoJsonSharp.Tests\GeoJsonSharp.Tests.csproj", "{7359AF86-3275-4E2F-802A-4B5131B90FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoJsonSharp.Tests", "GeoJsonSharp.Tests\GeoJsonSharp.Tests.csproj", "{7359AF86-3275-4E2F-802A-4B5131B90FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBCF7FFC-FE5E-49E1-82F2-53892255F95F}
 	EndGlobalSection
 EndGlobal
