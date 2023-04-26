@@ -98,6 +98,13 @@ namespace GeoJsonSharp.Parse
 
 			AssertRead(JsonToken.PropertyName);
 
+			if ((string)Reader.Value == "name")
+			{
+				AssertRead(JsonToken.String);
+
+				AssertRead(JsonToken.PropertyName);
+			}
+
 			if ((string)Reader.Value == "crs")
 			{
 				CRSBase crs;
